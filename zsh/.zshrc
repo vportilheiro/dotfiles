@@ -72,7 +72,7 @@ ZSH_THEME="gnzh"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-prompt pyenv virtualenv colored-man-pages)
+plugins=(git git-prompt git-auto-fetch virtualenv colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
