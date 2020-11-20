@@ -11,10 +11,13 @@ set -e
 DOTFILES_DIR=$HOME/dotfiles
 
 # Directory to which dotfiles are symlinked
-INSTALL_DIR=$HOME
+INSTALL_DIR=test
 
 # Extension added to existing files/directories that are replaced
 BACKUP_EXT=.pre-dotfiles-install
+
+# Print output for all actions
+VERBOSE=false
 
 # Takes the name of a tool/directory, and symlinks all hidden files to
 # INSTALL_DIR. Existsing files in INSTALL_DIR are backed up.
@@ -24,10 +27,14 @@ symlink_hidden() {
 		[ -e $file ] || [ -L $file ] || continue
 		filename=`basename $file`
 		if [ -e $INSTALL_DIR/$filename ]; then
-			echo "Backing up $filename to $filename$BACKUP_EXT"
+			if [ $VERBOSE = true ]; then
+				echo "Backing up $filename to $filename$BACKUP_EXT"
+			fi
 			mv $INSTALL_DIR/$filename $INSTALL_DIR/$filename$BACKUP_EXT
 		fi
-		echo "Creating symlink at $INSTALL_DIR/$filename"
+		if [ $VERBOSE = true ]; then
+			echo "Creating symlink at $INSTALL_DIR/$filename"
+		fi
 		ln -s $file $INSTALL_DIR/$filename
 	done
 }
