@@ -11,7 +11,7 @@ set -e
 DOTFILES_DIR=$HOME/dotfiles
 
 # Directory to which dotfiles are symlinked
-INSTALL_DIR=test
+INSTALL_DIR=$HOME
 
 # Extension added to existing files/directories that are replaced
 BACKUP_EXT=.pre-dotfiles-install
